@@ -21,6 +21,8 @@ import (
 	internaldomain "github.com/terrytay/godo/internal"
 	"github.com/terrytay/godo/internal/envvar"
 	"github.com/terrytay/godo/internal/postgresql"
+	"github.com/terrytay/godo/internal/rest"
+	"github.com/terrytay/godo/internal/service"
 	"go.uber.org/zap"
 )
 
@@ -80,7 +82,7 @@ func run(env, address string) (<-chan error, error) {
 	srv, err := newServer(serverConfig{
 		Address:     address,
 		DB:          pool,
-		Middlewares: []mux.MiddlewareFunc{nil, logging},
+		Middlewares: []mux.MiddlewareFunc{logging},
 		Logger:      logger,
 	})
 	if err != nil {
@@ -144,6 +146,9 @@ func newServer(conf serverConfig) (*http.Server, error) {
 	}
 
 	_ = postgresql.NewTask(conf.DB)
+
+	healthSvc := service.NewHealth()
+	rest.NewHealthHandler(healthSvc).Register(router)
 
 	fsys, _ := fs.Sub(content, "static")
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.FS(fsys))))

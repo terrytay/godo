@@ -11,15 +11,15 @@ COPY . .
 
 RUN go mod download
 
-RUN CGO_ENABLED=1 GOOS=linux go build -a -installsuffix cgo -ldflags "-extldflags -static" -tags musl \
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags "-extldflags -static" -tags musl \
       github.com/terrytay/godo/cmd/rest-server
 
 RUN CGO_ENABLED=0 GOOS=linux go install -a -installsuffix cgo -ldflags "-s -w" -tags 'postgres' \
-      github.com/golang-migrate/migrate/v4/cmd/migrate@v4.14.1
+     github.com/golang-migrate/migrate/v4/cmd/migrate@v4.14.1
 
 #-
 
-FROM alpine:3.13 AS certificates
+FROM alpine:3.15 AS certificates
 
 RUN apk --no-cache add ca-certificates
 
