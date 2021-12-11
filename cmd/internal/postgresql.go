@@ -8,6 +8,7 @@ import (
 
 	"github.com/jackc/pgx/v4/pgxpool"
 	"github.com/terrytay/godo/internal"
+	"github.com/terrytay/godo/internal/envvar"
 )
 
 func NewPostgresSQL(conf *envvar.Configuration) (*pgxpool.Pool, error) {
