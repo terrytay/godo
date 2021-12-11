@@ -1,0 +1,24 @@
+services:
+  rest-server:
+    build:
+      context: .
+      dockerfile: ./build/rest-server/Dockerfile
+    ports:
+      - "9234:9234"
+    command: rest-server -env /api/env.example
+    environment:
+      DATABASE_HOST: postgres
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:12.5-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dbname
+
