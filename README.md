@@ -2,8 +2,6 @@
 
 [![codecov](https://codecov.io/gh/terrytay/godo/branch/main/graph/badge.svg?token=DIB9PG9PUL)](https://codecov.io/gh/terrytay/godo)
 
----
-
 ## Project Motivation
 
 The motivation for this project comes from the need to understand microservices and production systems. There is a big difference between monolith applications and microservices. Microservices seek to decouple the services such that it increases scalability, reliability and maintainability in a large production system.
