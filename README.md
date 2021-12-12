@@ -4,11 +4,12 @@
 
 ## Project Motivation
 
-The motivation for this project comes from the need to understand microservices and production systems. There is a big difference between monolith applications and microservices. Microservices seek to decouple the services such that it increases scalability, reliability and maintainability in a large production system.
+The motivation for this project comes from the need to understand microservices and production systems. There is a big difference between monolith applications and microservices. Monolith applications have services that live in the same repository and communicates directly with each other. Microservices seek to decouple the services such that it increases scalability, reliability and maintainability in a large production system.
 
-With that, the architecture has to be sound and carefully thought after. With that in place, observability is one aspect that the system must have in order for development and debugging.
+With that, the architecture has to be sound and carefully thought after. After which, observability has to be used as it is one aspect that the system must have in order for development and debugging.
 
-This project is created for educational and learning purposes and it does not represent an accurate system that can be used for production.
+
+This project is created for educational and learning purposes. As such, it does not represent an accurate system that can be used for production.
 
 ## Introduction
 
